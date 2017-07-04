@@ -10,9 +10,9 @@ const promisify = require( "util" ).promisify;
  * @public
  * @author  Pedro Miguel P. S. Martins
  * @version 1.0.0
- * @module logger
+ * @module  logger
  *
- * @desc  Writes errors into files in both JSON and XML.
+ * @desc    Writes errors into files in both JSON and XML.
  */
 const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
 
@@ -27,7 +27,6 @@ const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
 
     const writeFile = promisify( fs.writeFile );
     const mkdir = promisify( fs.mkdir );
-
 
     const logJSON = error =>
         write(

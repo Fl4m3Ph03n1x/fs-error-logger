@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./logos/1_Primary_logo_on_transparent_320x65.png" >
+    <img src="../logos/1_Primary_logo_on_transparent_320x65.png" >
 </p>
 
 [![Build Status](https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger.svg?branch=master)](https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger)
