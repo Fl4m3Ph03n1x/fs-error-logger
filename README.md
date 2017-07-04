@@ -1,6 +1,9 @@
 
 [![Build Status](https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger.svg?branch=master)](https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger)
 [![codecov](https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger/branch/master/graph/badge.svg)](https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger)
+[![bitHound Dependencies](https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/badges/dependencies.svg)](https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/master/dependencies/npm)
+[![bitHound Dev Dependencies](https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/badges/devDependencies.svg)](https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/master/dependencies/npm)
+[![bitHound Overall Score](https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/badges/score.svg)](https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 #   What
