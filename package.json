@@ -14,18 +14,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Fl4m3Ph03n1x/heartbeatjs"
+    "url": "git+https://github.com/Fl4m3Ph03n1x/fs-error-logger"
   },
   "keywords": [
-    "heartbeat",
-    "ping",
-    "pong",
-    "connection"
+    "error",
+    "console.log",
+    "logger",
+    "log",
+    "errors",
+    "fs"
   ],
   "author": "Pedro Miguel Pereira Serrano Martins",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Fl4m3Ph03n1x/heartbeatjs/issues"
+    "url": "https://github.com/Fl4m3Ph03n1x/fs-error-logger/issues"
   },
   "homepage": "https://fl4m3ph03n1x.github.io/heartbeatjs/index.html",
   "devDependencies": {
