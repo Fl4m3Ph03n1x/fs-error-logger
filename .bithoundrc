@@ -1,0 +1,15 @@
+{
+  "ignore": [
+    ".git/",
+    ".nyc_output/",
+    "coverage/",
+    "docs/",
+    "node_modules/"
+  ],
+  "test": [
+    "test/**/**_spec.js",
+  ],
+  "critics": {
+    "eslint": {"engine": "standard"}
+  }
+}
