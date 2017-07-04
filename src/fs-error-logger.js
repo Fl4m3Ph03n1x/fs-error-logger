@@ -6,6 +6,14 @@ const toXML = require( "to-xml" ).toXML;
 
 const promisify = require( "util" ).promisify;
 
+/**
+ * @public
+ * @author  Pedro Miguel P. S. Martins
+ * @version 1.0.0
+ * @module logger
+ *
+ * @desc  Writes errors into files in both JSON and XML.
+ */
 const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
 
     if ( !isString( outputFolder ) )
