@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/Fl4m3Ph03n1x/fs-error-logger/issues"
   },
-  "homepage": "https://fl4m3ph03n1x.github.io/heartbeatjs/index.html",
+  "homepage": "https://fl4m3ph03n1x.github.io/fs-error-logger/",
   "devDependencies": {
     "chai": "^4.0.1",
     "chai-as-promised": "^7.1.0",
