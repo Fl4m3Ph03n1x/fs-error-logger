@@ -57,6 +57,21 @@ for additional information as well.
 
 ##  Examples
 
+Files created by the `logJSON` and `logXML` functions have the following format:
+
+ - ErrorType_ID.Format
+
+ So for example, an error of type `Error` using the default `Date.now` function
+ as an ID would produce the file `Error_12231413.json` or `Error_12231413.xml`,
+ depending on the format.
+
+ An error of type `TypeError` would generate `TypeError_12231413.json` and so
+ on...
+
+ The first part of the file is the `error.name` property, while the second is
+ an unique id returned by the `idFn` which you can parametrize. Following are
+ examples on how you can create logs.
+
 Create a logger and log an error in JSON:
 
 ```
