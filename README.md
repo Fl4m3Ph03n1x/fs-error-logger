@@ -9,17 +9,17 @@ you can inject a different dependency in it and use it instead.
 Most people, when catching an error, use `console.log` to display it and they're
 done. This however, is commonly seen as a bad practice because:
 
-1 - When having several errors, you will get your console spammed until you
+1. When having several errors, you will get your console spammed until you
 eventually loose track of errors or are too spammed to see them.
-2 - It is seen as a good practice to remove `console.log` calls from production
+2. It is seen as a good practice to remove `console.log` calls from production
 code
-3 - `console.log` calls will fail in some environments, forcing you to use dummy
+3. `console.log` calls will fail in some environments, forcing you to use dummy
 stubs instead
 
 Instead, of using console.log you should:
 
-1 - Actually try to fix the error
-2 - If that is not possible, log it or show it in a consistent, time persistent
+1. Actually try to fix the error
+2. If that is not possible, log it or show it in a consistent, time persistent
 way
 
 `fs-error-logger` was made to fulfill the second need. By saving your logs to
