@@ -28,12 +28,28 @@ const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
     const writeFile = promisify( fs.writeFile );
     const mkdir = promisify( fs.mkdir );
 
+    /**
+     * @public
+     * @function  logJSON
+     * @param     {Error} error   description
+     * @returns   {Promise}
+     *
+     * @desc      description
+     */
     const logJSON = error =>
         write(
             `${outputFolder}/${error.name}_${idFn()}.json`,
             stringify( serializeError( error ), { indent: 4 } )
         );
 
+    /**
+     * @public
+     * @function  logXML
+     * @param     {Error} error   description
+     * @returns   {Promise}
+     *
+     * @desc      description
+     */
     const logXML = error =>
         write(
             `${outputFolder}/${error.name}_${idFn()}.xml`,
@@ -48,6 +64,13 @@ const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
         return writeFile( fileName, fileContent );
     };
 
+    /**
+     * @public
+     * @function  setOutputFolder
+     * @param     {string}  newFolder description
+     *
+     * @desc      description
+     */
     const setOutputFolder = newFolder => {
         if ( !isString( newFolder ) )
             throw new TypeError( "'outputFolder' must be a string!" );
@@ -55,14 +78,35 @@ const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
         outputFolder = newFolder;
     };
 
+    /**
+     * @public
+     * @function  getOutputFolder
+     * @returns   {string}
+     *
+     * @desc      description
+     */
     const getOutputFolder = () => outputFolder;
 
+    /**
+     * @public
+     * @function  setIdFn
+     * @param     {function}  newFn description
+     *
+     * @desc      description
+     */
     const setIdFn = newFn => {
         if ( !isFunction( newFn ) )
             throw new TypeError( "'idFn' must be a function!" );
         idFn = newFn;
     };
 
+    /**
+     * @public
+     * @function  getIdFn
+     * @returns   {function}
+     *
+     * @desc      description
+     */
     const getIdFn = () => idFn;
 
     return {
@@ -77,6 +121,10 @@ const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
 
 const fs = require( "fs" );
 
+/**
+ * @public
+ * @function loggerFactory
+ */
 const loggerFactory = opts => {
     if ( opts === undefined || opts === null )
         return logger( { fs }, {} );
