@@ -7,7 +7,7 @@
     "node_modules/"
   ],
   "test": [
-    "test/**/**_spec.js",
+    "test/**/**_spec.js"
   ],
   "critics": {
     "eslint": {"engine": "standard"}
