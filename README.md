@@ -11,12 +11,12 @@ done. This however, is commonly seen as a bad practice because:
 
 1. When having several errors, you will get your console spammed until you
 eventually loose track of errors or are too spammed to see them.
-2. It is seen as a good practice to remove `console.log` calls from production
+2. It is seen as a [good practice to remove `console.log`](http://eslint.org/docs/rules/no-console) calls from production
 code
-3. `console.log` calls will fail in some environments, forcing you to use dummy
+3. `console.log` calls [will fail in some environments](https://stackoverflow.com/questions/1114187/is-it-a-bad-idea-to-leave-console-log-calls-in-your-producton-javascript-cod), forcing you to use dummy
 stubs instead
 
-Instead, of using console.log you should:
+Instead, of using `console.log` you should:
 
 1. Actually try to fix the error
 2. If that is not possible, log it or show it in a consistent, time persistent
@@ -24,7 +24,7 @@ way
 
 `fs-error-logger` was made to fulfill the second need. By saving your logs to
 disk, you are able to later retrieve and evaluate them. Furthermore, you also
-have access to the logs in two formats: JSON and XML - both human readble.
+have access to the logs in two formats: JSON and XML - both human readable.
 
 #   How
 
