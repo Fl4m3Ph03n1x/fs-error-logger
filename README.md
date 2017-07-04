@@ -1,3 +1,8 @@
+
+[![Build Status](https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger.svg?branch=master)](https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger)
+[![codecov](https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger/branch/master/graph/badge.svg)](https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+
 #   What
 
 `fs-error-logger` is a small module that allows you to write JSON and XML files
