@@ -57,4 +57,66 @@ for additional information as well.
 
 ##  Examples
 
-WIP
+Create a logger and log an error in JSON:
+
+```
+const loggerFactory = require( "fs-error-logger" );
+const logger = loggerFactory();
+
+//creates a file named 'Error_12512451.json' in the current folder
+logger.logJSON( new Error() )
+    .then( () => console.log("File written successfully!") )
+    .catch( console.log );
+```
+
+Create a logger that logs an error in XML:
+
+```
+const loggerFactory = require( "fs-error-logger" );
+const logger = loggerFactory();
+
+//creates a file named 'Error_12512451.xml' in the current folder
+logger.logXML( new Error() )
+    .then( () => console.log("File written successfully!") )
+    .catch( console.log );
+```
+
+Create a logger that writes to the 'errors/' folder:
+
+```
+const loggerFactory = require( "fs-error-logger" );
+const logger = loggerFactory({outputFolder: "./errors/"});
+
+//creates a file named 'Error_12512451.json' in the current folder
+logger.logJSON( new Error() )
+    .then( () => console.log("File written successfully!") )
+    .catch( console.log );
+```
+
+Create a logger that uses as uuidv1 as file ID:
+
+```
+const loggerFactory = require( "fs-error-logger" );
+const uuidv1 = require("uuid/v1");
+
+const logger = loggerFactory({idFn: uuidv1});
+
+//creates a file named 'Error_12512451.json' in the current folder
+logger.logJSON( new Error() )
+    .then( () => console.log("File written successfully!") )
+    .catch( console.log );
+```
+
+Create a logger with default options and then change the output folder:
+
+```
+const loggerFactory = require( "fs-error-logger" );
+const logger = loggerFactory();
+
+logger.setOutputFolder("./errors/");
+
+//creates a file named 'Error_12512451.json' in the "./errors/" folder
+logger.logJSON( new Error() )
+    .then( () => console.log("File written successfully!") )
+    .catch( console.log );
+```

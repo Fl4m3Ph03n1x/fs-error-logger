@@ -10,7 +10,7 @@
   "scripts": {
     "test": "NODE_ENV=test nyc mocha --reporter spec test/**/*_spec.js || true",
     "doc": "./node_modules/.bin/jsdoc ./src/heartbeat.js -d ./docs -t ./node_modules/ink-docstrap/template -R ./docs/DOCS_README.md",
-    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && ./node_modules/codecov/bin/codecov -t d82ea8f6-01bc-4db3-a8da-b8ca89ad0bb9"
+    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && ./node_modules/codecov/bin/codecov -t 32e5c44a-4eff-4361-8c07-e88e1d1ec027"
   },
   "repository": {
     "type": "git",
