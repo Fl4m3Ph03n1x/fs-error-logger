@@ -10,6 +10,6 @@
     "test/**/**_spec.js"
   ],
   "critics": {
-    "eslint": {"engine": "none"}
+    "lint": {"engine": "eslint"}
   }
 }
