@@ -37,9 +37,9 @@ server you just as well.
 
 If you have any questions you can ask in the issues page:
 
- - [fs-error-logger Issues](https://github.com/Fl4m3Ph03n1x/heartbeatjs/issues)
+ - [fs-error-logger Issues](https://github.com/Fl4m3Ph03n1x/fs-error-logger/issues)
 
-Feel free to check the [fs-error-logger project page](https://fl4m3ph03n1x.github.io/heartbeatjs/index.html)
+Feel free to check the [fs-error-logger project page](https://fl4m3ph03n1x.github.io/fs-error-logger/index.html)
 for additional information as well.
 
 ## Install
