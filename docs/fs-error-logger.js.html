@@ -121,7 +121,7 @@ const DEAFULT_OUTPUT_FOLDER = ".";
  *                            id generator function.
  * @returns {Object}
  *
- * @desc    The logger object, with the API that allows you to write errors to files.
+ * @desc    Returns a logger object, with the API that allows you to write errors to files.
  */
 module.exports.logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn = Date.now } ) => {
 
