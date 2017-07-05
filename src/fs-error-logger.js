@@ -177,6 +177,10 @@ const fs = require( "fs" );
  * @returns   {Object}
  *
  * @desc      Returns a logger object with all the dependencies pre-injected and with the given options, ready to use.
+ *
+ * @example
+ * const loggerFactory = require("fs-error-logger");
+ * const logger = loggerFactory({ outputFolder: ".", idFn: Date.now });
  */
 module.exports = opts => {
     if ( opts === undefined || opts === null )
