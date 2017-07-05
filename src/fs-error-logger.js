@@ -167,6 +167,6 @@ const fs = require( "fs" );
  */
 module.exports = opts => {
     if ( opts === undefined || opts === null )
-        return module.exports.logger( { fs }, {} );
-    return module.exports.logger( { fs }, opts );
+        return this.logger( { fs }, {} );
+    return this.logger( { fs }, opts );
 };
