@@ -2,9 +2,9 @@
   "ignore": [
     ".git/",
     ".nyc_output/",
-    "coverage/",
-    "**/docs/**",
-    "node_modules/"
+    "**/coverage/",
+    "./docs/**",
+    "**/node_modules/"
   ],
   "test": [
     "test/**/**_spec.js"
