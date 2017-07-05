@@ -60,12 +60,12 @@ for additional information as well.
 
 ## API
 
- - [logXML](https://fl4m3ph03n1x.github.io/fs-error-logger/module-logger.html#~logXML__anchor)
- - [logJSON](https://fl4m3ph03n1x.github.io/fs-error-logger/module-logger.html#~logJSON__anchor)
- - [setOutputFolder](https://fl4m3ph03n1x.github.io/fs-error-logger/module-logger.html#~setOutputFolder__anchor)
- - [getOutputFolder](https://fl4m3ph03n1x.github.io/fs-error-logger/module-logger.html#~getOutputFolder__anchor)
- - [setIdFn](https://fl4m3ph03n1x.github.io/fs-error-logger/module-logger.html#~setIdFn__anchor)
- - [getIdFn](https://fl4m3ph03n1x.github.io/fs-error-logger/module-logger.html#~getIdFn__anchor)
+ - <a href="https://fl4m3ph03n1x.github.io/fs-error-logger/module-logger.html#~logXML__anchor">logXML</a>
+ - <a href="https://fl4m3ph03n1x.github.io/fs-error-logger/module-logger.html#~logJSON__anchor">logJSON</a>
+ - <a href="https://fl4m3ph03n1x.github.io/fs-error-logger/module-logger.html#~setOutputFolder__anchor">setOutputFolder</a>
+ - <a href="https://fl4m3ph03n1x.github.io/fs-error-logger/module-logger.html#~getOutputFolder__anchor">getOutputFolder</a>
+ - <a href="https://fl4m3ph03n1x.github.io/fs-error-logger/module-logger.html#~setIdFn__anchor">setIdFn</a>
+ - <a href="https://fl4m3ph03n1x.github.io/fs-error-logger/module-logger.html#~getIdFn__anchor">getIdFn</a>
 
 ##  Examples
 
