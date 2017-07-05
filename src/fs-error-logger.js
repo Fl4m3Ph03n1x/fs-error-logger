@@ -6,21 +6,51 @@ const toXML = require( "to-xml" ).toXML;
 
 const promisify = require( "util" ).promisify;
 
+const error = require( "./errors" );
+const idFnNotAFunction = error.idFnNotAFunction;
+const pathNotAString = error.pathNotAString;
+
+const DEAFULT_OUTPUT_FOLDER = ".";
+
 /**
  * @public
  * @author  Pedro Miguel P. S. Martins
  * @version 1.0.0
- * @module  logger
+ * @module  fs-error-logger
  *
  * @desc    Writes errors into files in both JSON and XML.
  */
-const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
+
+/**
+ * @typedef   options
+ * @type      {Object}
+ * @property  {string}    [outputFolder="."] The default output folder.
+ * @property  {function}  [idFn=Date.now]    The default id generator
+ *                                                function.
+ *
+ * @desc      Options object determining output folder and id generator function.
+ */
+
+/**
+ * @alias   module:fs-error-logger.logger
+ * @param   {Object}  deps
+ * @param   {Object}  deps.fs File system object that allows the logger to
+ *                            write the files. Must have an async
+ *                            <code>writeFile</code> function and an async
+ *                            <code>mkdir</code> function.
+ * @param   {module:fs-error-logger~options} [opts]  Options object determining output folder and
+ *                            id generator function.
+ * @returns {Object}
+ *
+ * @desc    Returns a logger object, with the API that allows you to write errors to files.
+ */
+module.exports.logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn = Date.now } ) => {
 
     if ( !isString( outputFolder ) )
-        throw new TypeError( "'outputFolder' must be a string!" );
+        throw pathNotAString( outputFolder );
 
     if ( !isFunction( idFn ) )
-        throw new TypeError( "'idFn' must be a function!" );
+        throw idFnNotAFunction( idFn );
 
     if ( outputFolder[ outputFolder.length - 1 ] === "/" )
         outputFolder = outputFolder.substring( 0, outputFolder.length - 1 );
@@ -31,10 +61,10 @@ const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
     /**
      * @public
      * @function  logJSON
-     * @param     {Error} error   description
+     * @param     {Error}   error The error object we want to write.
      * @returns   {Promise}
      *
-     * @desc      description
+     * @desc      Resolves if the error was successfully written to a JSON file or rejects otherwise. The format of the file will be: <code>${error.name}_${idFn()}.json</code>.
      */
     const logJSON = error =>
         write(
@@ -45,10 +75,10 @@ const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
     /**
      * @public
      * @function  logXML
-     * @param     {Error} error   description
+     * @param     {Error}   error   The error object we want to write.
      * @returns   {Promise}
      *
-     * @desc      description
+     * @desc      Resolves if the error was successfully written to a XML file or rejects otherwise. The format of the file will be: <code>${error.name}_${idFn()}.xml</code>.
      */
     const logXML = error =>
         write(
@@ -67,15 +97,20 @@ const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
     /**
      * @public
      * @function  setOutputFolder
-     * @param     {string}  newFolder description
+     * @param     {string}  newFolder The path of the output folder.
+     * @throws    {PathNotAString}    If <code>newFolder</code> is not a string.
      *
-     * @desc      description
+     * @desc      Sets the output folder path to the one passed.
      */
     const setOutputFolder = newFolder => {
         if ( !isString( newFolder ) )
-            throw new TypeError( "'outputFolder' must be a string!" );
+            throw pathNotAString( newFolder );
 
-        outputFolder = newFolder;
+        if ( newFolder === "" ) {
+            outputFolder = DEAFULT_OUTPUT_FOLDER;
+        } else {
+            outputFolder = newFolder;
+        }
     };
 
     /**
@@ -83,20 +118,21 @@ const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
      * @function  getOutputFolder
      * @returns   {string}
      *
-     * @desc      description
+     * @desc      Returns the current output folder path.
      */
     const getOutputFolder = () => outputFolder;
 
     /**
      * @public
      * @function  setIdFn
-     * @param     {function}  newFn description
+     * @param     {function}  newFn   A new Id generator function.
+     * @throws    {IdFnNotAFunction}  If <code>newFn</code> is not a function.
      *
-     * @desc      description
+     * @desc      Sets the current Id generator function to the one given.
      */
     const setIdFn = newFn => {
         if ( !isFunction( newFn ) )
-            throw new TypeError( "'idFn' must be a function!" );
+            throw idFnNotAFunction( newFn );
         idFn = newFn;
     };
 
@@ -105,7 +141,7 @@ const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
      * @function  getIdFn
      * @returns   {function}
      *
-     * @desc      description
+     * @desc      Returns the current id generator function.
      */
     const getIdFn = () => idFn;
 
@@ -122,14 +158,15 @@ const logger = ( { fs }, { outputFolder = ".", idFn = Date.now } ) => {
 const fs = require( "fs" );
 
 /**
- * @public
- * @function loggerFactory
+ * @private
+ * @param     {module:fs-error-logger~options}    [opts] Options object determining output folder and
+ *                                id generator function.
+ * @returns   {Object}
+ *
+ * @desc      Returns a logger object with all the dependencies pre-injected and with the given options, ready to use.
  */
-const loggerFactory = opts => {
+module.exports = opts => {
     if ( opts === undefined || opts === null )
-        return logger( { fs }, {} );
-    return logger( { fs }, opts );
+        return module.exports.logger( { fs }, {} );
+    return module.exports.logger( { fs }, opts );
 };
-
-module.exports = loggerFactory;
-module.exports.logger = logger;

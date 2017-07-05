@@ -4,23 +4,23 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Index</title>
+	<title>DocStrap Index</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
 
-	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+	<link type="text/css" rel="stylesheet" href="styles/site.united.css">
 
 </head>
 
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top ">
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
 <div class="container">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Documentation</a>
+		<a class="navbar-brand" href="index.html">DocStrap</a>
 		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
@@ -33,7 +33,14 @@
 			<li class="dropdown">
 				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="module-logger.html">logger</a></li>
+					<li><a href="module-fs-error-logger.html">fs-error-logger</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html">Global</a></li>
 				</ul>
 			</li>
 			
@@ -86,50 +93,29 @@
 
 
     <section class="readme-section">
-        <article><p align="center">
-    <img src="../logos/1_Primary_logo_on_transparent_320x65.png" >
-</p>
+        <article><p align="center"><br>    <img src="../logos/1_Primary_logo_on_transparent_320x65.png" ><br></p>
 
-<p><a href="https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger"><img src="https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger.svg?branch=master" alt="Build Status"></a>
-<a href="https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger"><img src="https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger/branch/master/graph/badge.svg" alt="codecov"></a>
-<a href="https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/master/dependencies/npm"><img src="https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/badges/dependencies.svg" alt="bitHound Dependencies"></a>
-<a href="https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/master/dependencies/npm"><img src="https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/badges/devDependencies.svg" alt="bitHound Dev Dependencies"></a>
-<a href="https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger"><img src="https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/badges/score.svg" alt="bitHound Overall Score"></a>
-<a href="http://inch-ci.org/github/Fl4m3Ph03n1x/fs-error-logger"><img src="http://inch-ci.org/github/Fl4m3Ph03n1x/fs-error-logger.svg?branch=master" alt="Inline docs"></a>
-<a href="https://github.com/dwyl/esta/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="contributions welcome"></a></p>
-<h1>What</h1><p><code>fs-error-logger</code> is a small module that allows you to write JSON and XML files
-for errors. It was written for nodejs by using its <code>fs</code> library, but if you want
-you can inject a different dependency in it and use it instead.</p>
-<h1>Why</h1><p>Most people, when catching an error, use <code>console.log</code> to display it and they're
-done. This however, is commonly seen as a bad practice because:</p>
+<p><a href="https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger"><img src="https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger.svg?branch=master" alt="Build Status"></a><br><a href="https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger"><img src="https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger/branch/master/graph/badge.svg" alt="codecov"></a><br><a href="https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/master/dependencies/npm"><img src="https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/badges/dependencies.svg" alt="bitHound Dependencies"></a><br><a href="https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/master/dependencies/npm"><img src="https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/badges/devDependencies.svg" alt="bitHound Dev Dependencies"></a><br><a href="https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger"><img src="https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/badges/score.svg" alt="bitHound Overall Score"></a><br><a href="http://inch-ci.org/github/Fl4m3Ph03n1x/fs-error-logger"><img src="http://inch-ci.org/github/Fl4m3Ph03n1x/fs-error-logger.svg?branch=master" alt="Inline docs"></a><br><a href="https://github.com/dwyl/esta/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="contributions welcome"></a></p>
+<h1>What</h1><p><code>fs-error-logger</code> is a small module that allows you to write JSON and XML files<br>for errors. It was written for nodejs by using its <code>fs</code> library, but if you want<br>you can inject a different dependency in it and use it instead.</p>
+<h1>Why</h1><p>Most people, when catching an error, use <code>console.log</code> to display it and they're<br>done. This however, is commonly seen as a bad practice because:</p>
 <ol>
-<li>When having several errors, you will get your console spammed until you
-eventually loose track of errors or are too spammed to see them.</li>
-<li>It is seen as a <a href="http://eslint.org/docs/rules/no-console">good practice to remove <code>console.log</code></a> calls from production
-code</li>
-<li><code>console.log</code> calls <a href="https://stackoverflow.com/questions/1114187/is-it-a-bad-idea-to-leave-console-log-calls-in-your-producton-javascript-cod">will fail in some environments</a>, forcing you to use dummy
-stubs instead</li>
+<li>When having several errors, you will get your console spammed until you<br>eventually loose track of errors or are too spammed to see them.</li>
+<li>It is seen as a <a href="http://eslint.org/docs/rules/no-console">good practice to remove <code>console.log</code></a> calls from production<br>code</li>
+<li><code>console.log</code> calls <a href="https://stackoverflow.com/questions/1114187/is-it-a-bad-idea-to-leave-console-log-calls-in-your-producton-javascript-cod">will fail in some environments</a>, forcing you to use dummy<br>stubs instead</li>
 </ol>
 <p>Instead, of using <code>console.log</code> you should:</p>
 <ol>
 <li>Actually try to fix the error</li>
-<li>If that is not possible, log it or show it in a consistent, time persistent
-way</li>
+<li>If that is not possible, log it or show it in a consistent, time persistent<br>way</li>
 </ol>
-<p><code>fs-error-logger</code> was made to fulfill the second need. By saving your logs to
-disk, you are able to later retrieve and evaluate them. Furthermore, you also
-have access to the logs in two formats: JSON and XML - both human readable.</p>
-<h1>How</h1><p>Every time you log an error using<code>fs-error-logger</code> you decide where to write it,
-in what format and its ID. This means that your logs will always be unique and
-that you wont lose a single one.</p>
-<p>If you don't want to do any setup, you can use the default options which will
-server you just as well.</p>
+<p><code>fs-error-logger</code> was made to fulfill the second need. By saving your logs to<br>disk, you are able to later retrieve and evaluate them. Furthermore, you also<br>have access to the logs in two formats: JSON and XML - both human readable.</p>
+<h1>How</h1><p>Every time you log an error using<code>fs-error-logger</code> you decide where to write it,<br>in what format and its ID. This means that your logs will always be unique and<br>that you wont lose a single one.</p>
+<p>If you don't want to do any setup, you can use the default options which will<br>server you just as well.</p>
 <p>If you have any questions you can ask in the issues page:</p>
 <ul>
 <li><a href="https://github.com/Fl4m3Ph03n1x/fs-error-logger/issues">fs-error-logger Issues</a></li>
 </ul>
-<p>Feel free to check the <a href="https://fl4m3ph03n1x.github.io/fs-error-logger/index.html">fs-error-logger project page</a>
-for additional information as well.</p>
+<p>Feel free to check the <a href="https://fl4m3ph03n1x.github.io/fs-error-logger/index.html">fs-error-logger project page</a><br>for additional information as well.</p>
 <h2>Install</h2><pre class="prettyprint source"><code>npm install fs-error-logger --save</code></pre><h2>API</h2><ul>
 <li>logXML</li>
 <li>logJSON</li>
@@ -141,14 +127,9 @@ for additional information as well.</p>
 <h2>Examples</h2><p>Files created by the <code>logJSON</code> and <code>logXML</code> functions have the following format:</p>
 <ul>
 <li><p>ErrorType_ID.Format</p>
-<p>So for example, an error of type <code>Error</code> using the default <code>Date.now</code> function
-as an ID would produce the file <code>Error_12231413.json</code> or <code>Error_12231413.xml</code>,
-depending on the format.</p>
-<p>An error of type <code>TypeError</code> would generate <code>TypeError_12231413.json</code> and so
-on...</p>
-<p>The first part of the file is the <code>error.name</code> property, while the second is
-an unique id returned by the <code>idFn</code> which you can parametrize. Following are
-examples on how you can create logs.</p>
+<p>So for example, an error of type <code>Error</code> using the default <code>Date.now</code> function<br>as an ID would produce the file <code>Error_12231413.json</code> or <code>Error_12231413.xml</code>,<br>depending on the format.</p>
+<p>An error of type <code>TypeError</code> would generate <code>TypeError_12231413.json</code> and so<br>on...</p>
+<p>The first part of the file is the <code>error.name</code> property, while the second is<br>an unique id returned by the <code>idFn</code> which you can parametrize. Following are<br>examples on how you can create logs.</p>
 </li>
 </ul>
 <p>Create a logger and log an error in JSON:</p>
@@ -233,10 +214,14 @@ logger.logJSON( new Error() )
 <footer>
 
 
+	<span class="copyright">
+	DocStrap Copyright © 2012-2015 The contributors to the JSDoc3 and DocStrap projects.
+	</span>
+
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on 2017-07-04T16:28:31+02:00
+		on Wed Jul 5th 2017
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
@@ -282,7 +267,7 @@ $( function () {
 	} );
 
 	Sunlight.highlightAll( {
-		lineNumbers : false,
+		lineNumbers : true,
 		showMenu : true,
 		enableDoclinks : true
 	} );

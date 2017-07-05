@@ -98,10 +98,16 @@ describe( "logger", () => {
 
     it( "should throw if we call 'setOutputFolder' without a string parameter", () => {
         const logger = loggerFactory();
-        expect( logger.setOutputFolder.bind( null, {} ) ).to.throw( TypeError );
+        expect( logger.setOutputFolder.bind( null, 0 ) ).to.throw( TypeError );
     } );
 
     it( "should throw if we pass an 'outputFolder' that is not a string in the constructor parameters", () => {
         expect( loggerFactory.bind( null, { outputFolder: {} } ) ).to.throw( TypeError );
+    } );
+
+    it( "should set the outputFolder to the default if passed an empty string", () => {
+        const logger = loggerFactory({outputFolder: ERROR_DIR});
+        logger.setOutputFolder( "" );
+        expect(logger.getOutputFolder()).to.eql(".");
     } );
 } );

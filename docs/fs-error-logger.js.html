@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>DocStrap Source: fs-error-logger.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.united.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">DocStrap</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-fs-error-logger.html">fs-error-logger</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html">Global</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: fs-error-logger.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">const serializeError = require( "serialize-error" );
+const isFunction = require( "lodash.isfunction" );
+const isString = require( "lodash.isstring" );
+const stringify = require( "json-stringify-pretty-compact" );
+const toXML = require( "to-xml" ).toXML;
+
+const promisify = require( "util" ).promisify;
+
+const error = require( "./errors" );
+const idFnNotAFunction = error.idFnNotAFunction;
+const pathNotAString = error.pathNotAString;
+
+const DEAFULT_OUTPUT_FOLDER = ".";
+
+/**
+ * @public
+ * @author  Pedro Miguel P. S. Martins
+ * @version 1.0.0
+ * @module  fs-error-logger
+ *
+ * @desc    Writes errors into files in both JSON and XML.
+ */
+
+/**
+ * @typedef   options
+ * @type      {Object}
+ * @property  {string}    [outputFolder="."] The default output folder.
+ * @property  {function}  [idFn=Date.now]    The default id generator
+ *                                                function.
+ *
+ * @desc      Options object determining output folder and id generator function.
+ */
+
+/**
+ * @alias   module:fs-error-logger.logger
+ * @param   {Object}  deps
+ * @param   {Object}  deps.fs File system object that allows the logger to
+ *                            write the files. Must have an async
+ *                            &lt;code>writeFile&lt;/code> function and an async
+ *                            &lt;code>mkdir&lt;/code> function.
+ * @param   {module:fs-error-logger~options} [opts]  Options object determining output folder and
+ *                            id generator function.
+ * @returns {Object}
+ *
+ * @desc    The logger object, with the API that allows you to write errors to files.
+ */
+module.exports.logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn = Date.now } ) => {
+
+    if ( !isString( outputFolder ) )
+        throw pathNotAString( outputFolder );
+
+    if ( !isFunction( idFn ) )
+        throw idFnNotAFunction( idFn );
+
+    if ( outputFolder[ outputFolder.length - 1 ] === "/" )
+        outputFolder = outputFolder.substring( 0, outputFolder.length - 1 );
+
+    const writeFile = promisify( fs.writeFile );
+    const mkdir = promisify( fs.mkdir );
+
+    /**
+     * @public
+     * @function  logJSON
+     * @param     {Error}   error The error object we want to write.
+     * @returns   {Promise}
+     *
+     * @desc      Resolves if the error was successfully written to a JSON file or rejects otherwise. The format of the file will be: &lt;code>${error.name}_${idFn()}.json&lt;/code>.
+     */
+    const logJSON = error =>
+        write(
+            `${outputFolder}/${error.name}_${idFn()}.json`,
+            stringify( serializeError( error ), { indent: 4 } )
+        );
+
+    /**
+     * @public
+     * @function  logXML
+     * @param     {Error}   error   The error object we want to write.
+     * @returns   {Promise}
+     *
+     * @desc      Resolves if the error was successfully written to a XML file or rejects otherwise. The format of the file will be: &lt;code>${error.name}_${idFn()}.xml&lt;/code>.
+     */
+    const logXML = error =>
+        write(
+            `${outputFolder}/${error.name}_${idFn()}.xml`,
+            toXML( { error: serializeError( error ) } )
+        );
+
+    const write = ( fileName, fileContent ) => {
+        if ( !fs.existsSync( outputFolder ) )
+            return mkdir( outputFolder )
+                .then( () => writeFile( fileName, fileContent ) );
+
+        return writeFile( fileName, fileContent );
+    };
+
+    /**
+     * @public
+     * @function  setOutputFolder
+     * @param     {string}  newFolder The path of the output folder.
+     * @throws    {PathNotAString}    If &lt;code>newFolder&lt;/code> is not a string.
+     *
+     * @desc      Sets the output folder path to the one passed.
+     */
+    const setOutputFolder = newFolder => {
+        if ( !isString( newFolder ) )
+            throw pathNotAString( newFolder );
+
+        if ( newFolder === "" ) {
+            outputFolder = DEAFULT_OUTPUT_FOLDER;
+        } else {
+            outputFolder = newFolder;
+        }
+    };
+
+    /**
+     * @public
+     * @function  getOutputFolder
+     * @returns   {string}
+     *
+     * @desc      Returns the current output folder path.
+     */
+    const getOutputFolder = () => outputFolder;
+
+    /**
+     * @public
+     * @function  setIdFn
+     * @param     {function}  newFn   A new Id generator function.
+     * @throws    {IdFnNotAFunction}  If &lt;code>newFn&lt;/code> is not a function.
+     *
+     * @desc      Sets the current Id generator function to the one given.
+     */
+    const setIdFn = newFn => {
+        if ( !isFunction( newFn ) )
+            throw idFnNotAFunction( newFn );
+        idFn = newFn;
+    };
+
+    /**
+     * @public
+     * @function  getIdFn
+     * @returns   {function}
+     *
+     * @desc      Returns the current id generator function.
+     */
+    const getIdFn = () => idFn;
+
+    return {
+        logJSON,
+        logXML,
+        setOutputFolder,
+        getOutputFolder,
+        setIdFn,
+        getIdFn
+    };
+};
+
+const fs = require( "fs" );
+
+/**
+ * @private
+ * @param     {module:fs-error-logger~options}    [opts] Options object determining output folder and
+ *                                id generator function.
+ * @returns   {Object}
+ *
+ * @desc      Returns a logger object with all the dependencies pre-injected and with the given options, ready to use.
+ */
+module.exports = opts => {
+    if ( opts === undefined || opts === null )
+        return module.exports.logger( { fs }, {} );
+    return module.exports.logger( { fs }, opts );
+};
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	DocStrap Copyright © 2012-2015 The contributors to the JSDoc3 and DocStrap projects.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	
+		on Wed Jul 5th 2017
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

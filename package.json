@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "NODE_ENV=test nyc mocha --reporter spec test/**/*_spec.js || true",
-    "doc": "./node_modules/.bin/jsdoc ./src/**.js -d ./docs -t ./node_modules/ink-docstrap/template -R ./docs/DOCS_README.md",
+    "doc": "./node_modules/.bin/jsdoc ./src/**.js -d ./docs -c ./jsdocConf.json -t ./node_modules/ink-docstrap/template -R ./docs/DOCS_README.md",
     "report-coverage": "nyc report --reporter=lcov > coverage.lcov && ./node_modules/codecov/bin/codecov -t 32e5c44a-4eff-4361-8c07-e88e1d1ec027"
   },
   "repository": {
@@ -35,12 +35,12 @@
     "chai-as-promised": "^7.1.0",
     "codecov": "^2.2.0",
     "eslint": "^4.1.1",
-    "ink-docstrap": "^1.3.0",
     "jsdoc": "^3.4.3",
     "mocha": "^3.4.2",
     "nyc": "^11.0.1",
     "rmdir": "^1.2.0",
-    "sinon": "^2.3.2"
+    "sinon": "^2.3.2",
+    "ink-docstrap": "^1.3.0"
   },
   "dependencies": {
     "json-stringify-pretty-compact": "^1.0.4",

@@ -60,7 +60,7 @@ for additional information as well.
 
 ## API
 
- - logXML
+ - [logXML](https://fl4m3ph03n1x.github.io/fs-error-logger/module-logger.html#~logXML__anchor)
  - logJSON
  - setOutputFolder
  - getOutputFolder

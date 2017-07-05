@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>DocStrap Modules</title>
+	<title>DocStrap Global</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,7 +72,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Modules</h1>
+	<h1 class="page-title">Global</h1>
 <section>
 
 <header>
@@ -148,6 +148,196 @@
 
     
 
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        <dl>
+                
+<hr>
+<dt class="name" id="IdFnNotAFunction">
+    <h4 id="IdFnNotAFunction">IdFnNotAFunction</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Error thrown when one tries ot set the id generator function to something that is not a function.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">TypeError</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="errors.js.html">errors.js</a>,
+				 <a href="errors.js.html#sunlight-1-line-1">line 1</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+        <h5>Examples</h5>
+        
+    <pre class="sunlight-highlight-javascript">const loggerFactory = require( &quot;fs-error-logger&quot; );
+//&quot;Not a function!&quot; is not a function
+const logger = loggerFactory( { idFn: &quot;Not a function!&quot; } );</pre>
+
+    <pre class="sunlight-highlight-javascript">const loggerFactory = require( &quot;fs-error-logger&quot; );
+const logger = loggerFactory( );
+logger.setIdFn(0); //0 is not a function</pre>
+
+
+    
+</dd>
+
+            
+                
+<hr>
+<dt class="name" id="PathNotAString">
+    <h4 id="PathNotAString">PathNotAString</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Error thrown when one tries ot set the output folder path with something that is not a string.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">TypeError</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="errors.js.html">errors.js</a>,
+				 <a href="errors.js.html#sunlight-1-line-17">line 17</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+        <h5>Examples</h5>
+        
+    <pre class="sunlight-highlight-javascript">const loggerFactory = require( &quot;fs-error-logger&quot; );
+//{} is not a string
+const logger = loggerFactory( { outputFolder: {} } );</pre>
+
+    <pre class="sunlight-highlight-javascript">const loggerFactory = require( &quot;fs-error-logger&quot; );
+const logger = loggerFactory( );
+logger.setOutputFolder(2); //2 is not a string</pre>
+
+
+    
+</dd>
+
+            </dl>
     
 
     
