@@ -3,6 +3,7 @@
 </p>
 
 [![NPM](https://nodei.co/npm/fs-error-logger.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/fs-error-logger/)
+
 [![Build Status](https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger.svg?branch=master)](https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger)
 [![codecov](https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger/branch/master/graph/badge.svg)](https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger)
 [![bitHound Dependencies](https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/badges/dependencies.svg)](https://www.bithound.io/github/Fl4m3Ph03n1x/fs-error-logger/master/dependencies/npm)
