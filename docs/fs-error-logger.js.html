@@ -123,7 +123,7 @@ const DEAFULT_OUTPUT_FOLDER = ".";
  *
  * @desc    Returns a logger object, with the API that allows you to write errors to files.
  */
-module.exports.logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn = Date.now } ) => {
+const logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn = Date.now } ) => {
 
     if ( !isString( outputFolder ) )
         throw pathNotAString( outputFolder );
@@ -234,6 +234,8 @@ module.exports.logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn =
     };
 };
 
+module.exports.logger = logger;
+
 const fs = require( "fs" );
 
 /**
@@ -246,8 +248,8 @@ const fs = require( "fs" );
  */
 module.exports = opts => {
     if ( opts === undefined || opts === null )
-        return module.exports.logger( { fs }, {} );
-    return module.exports.logger( { fs }, opts );
+        return logger( { fs }, {} );
+    return logger( { fs }, opts );
 };
 </pre>
     </article>

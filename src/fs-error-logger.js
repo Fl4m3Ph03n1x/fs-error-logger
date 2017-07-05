@@ -31,6 +31,19 @@ const DEAFULT_OUTPUT_FOLDER = ".";
  * @desc      Options object determining output folder and id generator function.
  */
 
+/**
+ * @alias   module:fs-error-logger.logger
+ * @param   {Object}  deps
+ * @param   {Object}  deps.fs File system object that allows the logger to
+ *                            write the files. Must have an async
+ *                            <code>writeFile</code> function and an async
+ *                            <code>mkdir</code> function.
+ * @param   {module:fs-error-logger~options} [opts]  Options object determining output folder and
+ *                            id generator function.
+ * @returns {Object}
+ *
+ * @desc    Returns a logger object, with the API that allows you to write errors to files.
+ */
 const logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn = Date.now } ) => {
 
     if ( !isString( outputFolder ) )
@@ -142,19 +155,6 @@ const logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn = Date.now
     };
 };
 
-/**
- * @alias   module:fs-error-logger.logger
- * @param   {Object}  deps
- * @param   {Object}  deps.fs File system object that allows the logger to
- *                            write the files. Must have an async
- *                            <code>writeFile</code> function and an async
- *                            <code>mkdir</code> function.
- * @param   {module:fs-error-logger~options} [opts]  Options object determining output folder and
- *                            id generator function.
- * @returns {Object}
- *
- * @desc    Returns a logger object, with the API that allows you to write errors to files.
- */
 module.exports.logger = logger;
 
 const fs = require( "fs" );
