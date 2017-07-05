@@ -1,6 +1,6 @@
 {
   "name": "fs-error-logger",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Writes errors into files in both JSON and XML.",
   "main": "./src/fs-error-logger.js",
   "directories": {

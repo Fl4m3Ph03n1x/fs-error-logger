@@ -31,20 +31,7 @@ const DEAFULT_OUTPUT_FOLDER = ".";
  * @desc      Options object determining output folder and id generator function.
  */
 
-/**
- * @alias   module:fs-error-logger.logger
- * @param   {Object}  deps
- * @param   {Object}  deps.fs File system object that allows the logger to
- *                            write the files. Must have an async
- *                            <code>writeFile</code> function and an async
- *                            <code>mkdir</code> function.
- * @param   {module:fs-error-logger~options} [opts]  Options object determining output folder and
- *                            id generator function.
- * @returns {Object}
- *
- * @desc    Returns a logger object, with the API that allows you to write errors to files.
- */
-module.exports.logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn = Date.now } ) => {
+const logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn = Date.now } ) => {
 
     if ( !isString( outputFolder ) )
         throw pathNotAString( outputFolder );
@@ -155,6 +142,21 @@ module.exports.logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn =
     };
 };
 
+/**
+ * @alias   module:fs-error-logger.logger
+ * @param   {Object}  deps
+ * @param   {Object}  deps.fs File system object that allows the logger to
+ *                            write the files. Must have an async
+ *                            <code>writeFile</code> function and an async
+ *                            <code>mkdir</code> function.
+ * @param   {module:fs-error-logger~options} [opts]  Options object determining output folder and
+ *                            id generator function.
+ * @returns {Object}
+ *
+ * @desc    Returns a logger object, with the API that allows you to write errors to files.
+ */
+module.exports.logger = logger;
+
 const fs = require( "fs" );
 
 /**
@@ -167,6 +169,6 @@ const fs = require( "fs" );
  */
 module.exports = opts => {
     if ( opts === undefined || opts === null )
-        return this.logger( { fs }, {} );
-    return this.logger( { fs }, opts );
+        return logger( { fs }, {} );
+    return logger( { fs }, opts );
 };
