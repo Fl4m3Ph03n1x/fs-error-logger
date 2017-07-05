@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./logos/1_Primary_logo_on_transparent_320x65.png" >
+    <img src="./logos/logo_no_wm.png" >
 </p>
 
 [![NPM](https://nodei.co/npm/fs-error-logger.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/fs-error-logger/)

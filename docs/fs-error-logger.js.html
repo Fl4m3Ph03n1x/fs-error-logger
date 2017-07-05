@@ -94,7 +94,7 @@ const DEAFULT_OUTPUT_FOLDER = ".";
 /**
  * @public
  * @author  Pedro Miguel P. S. Martins
- * @version 1.0.0
+ * @version 1.0.1
  * @module  fs-error-logger
  *
  * @desc    Writes errors into files in both JSON and XML.
@@ -165,6 +165,17 @@ const logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn = Date.now
             toXML( { error: serializeError( error ) } )
         );
 
+
+    /**
+     * @private
+     * @function write
+     * @param   {string}  fileName      The name of the file to be created.
+     * @param   {string}  fileContent   The content of the file.
+     * @returns {Promise}
+     *
+     * @desc    If successfull, resolves after creates a file with given name
+     *          and content.Otherwise rejects with error.
+     */
     const write = ( fileName, fileContent ) => {
         if ( !fs.existsSync( outputFolder ) )
             return mkdir( outputFolder )
@@ -245,6 +256,10 @@ const fs = require( "fs" );
  * @returns   {Object}
  *
  * @desc      Returns a logger object with all the dependencies pre-injected and with the given options, ready to use.
+ *
+ * @example
+ * const loggerFactory = require("fs-error-logger");
+ * const logger = loggerFactory({ outputFolder: ".", idFn: Date.now });
  */
 module.exports = opts => {
     if ( opts === undefined || opts === null )

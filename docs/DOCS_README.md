@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/Fl4m3Ph03n1x/fs-error-logger/master/logos/1_Primary_logo_on_transparent_320x65.png" >
+    <img src="https://raw.githubusercontent.com/Fl4m3Ph03n1x/fs-error-logger/master/logos/logo_no_wm.png" >
 </p>
 
 <p align="center">
