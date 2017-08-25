@@ -1,4 +1,4 @@
-module.exports = {
+{
     "env": {
         "es6": true,
         "node": true,
@@ -10,12 +10,15 @@ module.exports = {
     },
     "extends": "eslint:recommended",
     "rules": {
+        "global-require": [ "error" ],
+        "no-useless-concat": [ "error" ],
+        "prefer-template": [ "error" ],
         "no-template-curly-in-string": [ "error" ],
         "no-extra-parens": [ "error" ],
         "strict": [ "error" ],
         "no-iterator": [ "error" ],
         "no-with": [ "error" ],
-        "no-trailing-spaces": [ "error" ],
+        "no-trailing-spaces": [ "error", { "ignoreComments": true } ],
         "eqeqeq": [ "error", "always" ],
         "indent": [ "error", 4 ],
         "linebreak-style": [ "error", "unix" ],
@@ -23,9 +26,6 @@ module.exports = {
         "semi": [ "error", "always" ],
         "no-console": 0,
         "no-var": [ "error" ],
-        "prefer-const": [
-            "error",
-            { "destructuring": "any", "ignoreReadBeforeAssign": false }
-        ]
+        "prefer-const": [ "error", { "destructuring": "any", "ignoreReadBeforeAssign": false } ]
     }
-};
+}
