@@ -1,12 +1,14 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/Fl4m3Ph03n1x/fs-error-logger/master/logos/logo_no_wm.png" >
+    <a href="https://github.com/Fl4m3Ph03n1x/fs-error-logger">
+        <img src="https://raw.githubusercontent.com/Fl4m3Ph03n1x/fs-error-logger/master/logos/logo_no_wm.png" >
+    </a>
 </p>
 
 <div align="center">
 
 [![NPM](https://nodei.co/npm/fs-error-logger.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/fs-error-logger/)
 
-[![Build Status](https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger.svg?branch=master)](https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger)[![codecov](https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger/branch/master/graph/badge.svg)](https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger)[![Dependency Status](https://www.versioneye.com/user/projects/595cf6bf0fb24f006c059d56/badge.svg)](https://www.versioneye.com/user/projects/595cf6bf0fb24f006c059d56)[![Code Climate](https://codeclimate.com/github/Fl4m3Ph03n1x/fs-error-logger/badges/gpa.svg)](https://codeclimate.com/github/Fl4m3Ph03n1x/fs-error-logger)[![Inline docs](http://inch-ci.org/github/Fl4m3Ph03n1x/fs-error-logger.svg?branch=master)](http://inch-ci.org/github/Fl4m3Ph03n1x/fs-error-logger)[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+[![Build Status](https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger.svg?branch=master)](https://travis-ci.org/Fl4m3Ph03n1x/fs-error-logger)[![codecov](https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger/branch/master/graph/badge.svg)](https://codecov.io/gh/Fl4m3Ph03n1x/fs-error-logger)[![Dependency Status](https://www.versioneye.com/user/projects/595cf6bf0fb24f006c059d56/badge.svg)](https://www.versioneye.com/user/projects/595cf6bf0fb24f006c059d56)[![Code Climate](https://codeclimate.com/github/Fl4m3Ph03n1x/fs-error-logger/badges/gpa.svg)](https://codeclimate.com/github/Fl4m3Ph03n1x/fs-error-logger)[![Known Vulnerabilities](https://snyk.io/test/github/fl4m3ph03n1x/fs-error-logger/badge.svg)](https://snyk.io/test/github/fl4m3ph03n1x/fs-error-logger)[![Inline docs](http://inch-ci.org/github/Fl4m3Ph03n1x/fs-error-logger.svg?branch=master)](http://inch-ci.org/github/Fl4m3Ph03n1x/fs-error-logger)[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Fl4m3Ph03n1x/fs-error-logger/issues)
 
 </div>
 
