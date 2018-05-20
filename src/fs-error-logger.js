@@ -10,12 +10,12 @@ const error = require( "./errors" );
 const idFnNotAFunction = error.idFnNotAFunction;
 const pathNotAString = error.pathNotAString;
 
-const DEAFULT_OUTPUT_FOLDER = ".";
+const DEFAULT_OUTPUT_FOLDER = ".";
 
 /**
  * @public
  * @author  Pedro Miguel P. S. Martins
- * @version 1.0.1
+ * @version 1.0.2
  * @module  fs-error-logger
  *
  * @desc    Writes errors into files in both JSON and XML.
@@ -44,7 +44,7 @@ const DEAFULT_OUTPUT_FOLDER = ".";
  *
  * @desc    Returns a logger object, with the API that allows you to write errors to files.
  */
-const logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn = Date.now } ) => {
+const logger = ( { fs }, { outputFolder = DEFAULT_OUTPUT_FOLDER, idFn = Date.now } ) => {
 
     if ( !isString( outputFolder ) )
         throw pathNotAString( outputFolder );
@@ -94,7 +94,7 @@ const logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn = Date.now
      * @param   {string}  fileContent   The content of the file.
      * @returns {Promise}
      *
-     * @desc    If successfull, resolves after creates a file with given name
+     * @desc    If successful, resolves after creates a file with given name
      *          and content.Otherwise rejects with error.
      */
     const write = ( fileName, fileContent ) => {
@@ -118,7 +118,7 @@ const logger = ( { fs }, { outputFolder = DEAFULT_OUTPUT_FOLDER, idFn = Date.now
             throw pathNotAString( newFolder );
 
         if ( newFolder === "" ) {
-            outputFolder = DEAFULT_OUTPUT_FOLDER;
+            outputFolder = DEFAULT_OUTPUT_FOLDER;
         } else {
             outputFolder = newFolder;
         }

@@ -12,7 +12,7 @@ describe( "logger", () => {
 
     const ERROR_DIR = "./errors";
 
-    afterEach( "delete test fodlers", done => {
+    afterEach( "delete test folders", done => {
         if ( fs.existsSync( ERROR_DIR ) ) {
             rmdir( ERROR_DIR, ( err ) => {
                 if ( err ) {
@@ -83,7 +83,7 @@ describe( "logger", () => {
     } );
 
     it( "should remove '/' from outputFolder name", () => {
-        const logger = loggerFactory( { outputFolder: ERROR_DIR + "/" } );
+        const logger = loggerFactory( { outputFolder: `${ERROR_DIR}/` } );
         expect( logger.getOutputFolder() ).to.eql( ERROR_DIR );
     } );
 

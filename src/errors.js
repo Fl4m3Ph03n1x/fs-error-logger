@@ -42,7 +42,7 @@
  */
 const errorFactory = ( name, message, errorType ) => {
     const error = errorType;
-    error.message = message + ` See https://fl4m3ph03n1x.github.io/fs-error-logger/global.html#${name} for more info on errors.`;
+    error.message = `${message} See https://fl4m3ph03n1x.github.io/fs-error-logger/global.html#${name} for more info on errors.`;
     error.name = name;
     return error;
 };
