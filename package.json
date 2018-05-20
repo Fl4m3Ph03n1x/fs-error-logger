@@ -1,6 +1,6 @@
 {
   "name": "fs-error-logger",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Writes errors into files in both JSON and XML.",
   "main": "./src/fs-error-logger.js",
   "directories": {
@@ -33,12 +33,12 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "codecov": "^2.3.0",
-    "eslint": "^4.8.0",
+    "codecov": "^3.0.2",
+    "eslint": "^4.19.1",
     "ink-docstrap": "^1.3.0",
     "jsdoc": "^3.5.5",
     "mocha": "^4.0.1",
-    "nyc": "^11.2.1",
+    "nyc": "^11.8.0",
     "rmdir": "^1.2.0",
     "sinon": "^4.0.1"
   },
